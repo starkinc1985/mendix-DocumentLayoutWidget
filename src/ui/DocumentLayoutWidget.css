@@ -1,23 +1,24 @@
-.document-layout-widget .header {
-    position: fixed;
-    top: 0;
+.layout-table {
     width: 100%;
+    border-collapse: collapse;
 }
 
-.document-layout-widget .layout-table {
-    width: 100%;
+.layout-table thead {
+    display: table-header-group; /* tells print engine to repeat this on every page */
 }
 
-.document-layout-widget .layout-table > thead {
+.layout-table thead tr {
     break-inside: avoid;
 }
 
-.document-layout-widget .layout-table > tfoot {
-    break-inside: avoid;
+.header {
+    /* no position:fixed anymore - remove any top/left/right rules too */
+    width: 100%;
 }
 
-.document-layout-widget .footer {
+.footer {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
 }

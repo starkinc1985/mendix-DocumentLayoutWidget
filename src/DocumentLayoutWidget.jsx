@@ -2,23 +2,11 @@ import "./ui/DocumentLayoutWidget.css";
 
 export function DocumentLayoutWidget(props) {
     const { headerFooter, headerContent, bodyContent, footerContent, headerHeight, footerHeight } = props;
-
     const className = "document-layout-widget " + props.class;
 
-    // Created based on this blog post:
-    // https://medium.com/@Idan_Co/the-ultimate-print-html-template-with-header-footer-568f415f6d2a
-
-    // General idea is to use a table because the header and footer of a table will be repeated on every page.
-    // However, the table footer on the last page will be shown directly underneath the content.
-    // So a combination is used: A table to reserve space but not render any content.
-    // Render content in the reserved space using position fixed.
-    // Without reserving space using the table, the contents would overflow the header and footer.
-
-    // The header/footer style only contains the height value.
     const headerStyle = {
         height: headerHeight + "px"
     };
-
     const footerStyle = {
         height: footerHeight + "px"
     };
@@ -30,8 +18,10 @@ export function DocumentLayoutWidget(props) {
                     <thead>
                         <tr>
                             <td>
-                                <div className="header-space" style={headerStyle}>
-                                    &nbsp;
+                                {/* Real header content lives INSIDE thead now.
+                                    This repeats per page, scoped to THIS table only. */}
+                                <div className="header" style={headerStyle}>
+                                    {headerContent}
                                 </div>
                             </td>
                         </tr>
@@ -56,11 +46,9 @@ export function DocumentLayoutWidget(props) {
                     </tfoot>
                 )}
             </table>
-            {(headerFooter === "header" || headerFooter === "both") && (
-                <div className="header" style={headerStyle}>
-                    {headerContent}
-                </div>
-            )}
+            {/* Footer keeps the fixed-position hack, since tfoot doesn't
+                reliably pin to the bottom of the page across browsers/print
+                engines - it renders right after content on the final page. */}
             {(headerFooter === "footer" || headerFooter === "both") && (
                 <div className="footer" style={footerStyle}>
                     {footerContent}
