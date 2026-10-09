@@ -1,6 +1,6 @@
 import "./ui/DocumentLayoutWidget.css";
 
-export function DocumentLayoutWidget(props) {
+export function DocumentLayoutWidgetCustom(props) {
     const { headerFooter, headerContent, bodyContent, footerContent, headerHeight, footerHeight } = props;
     const className = "document-layout-widget " + props.class;
 

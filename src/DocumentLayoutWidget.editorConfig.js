@@ -126,5 +126,5 @@ export function check(values) {
 //  * @returns {string}
 //  */
 // export function getCustomCaption(values, platform) {
-//     return "DocumentLayoutWidget";
+//     return "DocumentLayoutWidgetCustom";
 // }

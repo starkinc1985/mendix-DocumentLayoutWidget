@@ -1,4 +1,4 @@
-## DocumentLayoutWidget
+## DocumentLayoutWidgetCustom
 Use a header and footer in the new document generation feature
 
 ## Features

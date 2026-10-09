@@ -1,6 +1,6 @@
 {
   "name": "documentlayoutwidget",
-  "widgetName": "DocumentLayoutWidget",
+  "widgetName": "DocumentLayoutWidgetCustom",
   "version": "3.0.0",
   "description": "Document layout widget",
   "copyright": "2023 Aiden",
